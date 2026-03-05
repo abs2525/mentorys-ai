@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BrainLogo from "./BrainLogo";
+import Image from "next/image";
 import { Sparkles, ArrowLeft } from "lucide-react";
 
 export default function Hero() {
@@ -31,12 +31,9 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
         {/* Logo */}
-        <div className="flex justify-center mb-4">
-          <BrainLogo size={90} />
+        <div className="flex justify-center mb-8">
+          <Image src="/logo.png" alt="Mentorys.ai" width={280} height={160} priority className="w-64 h-auto" />
         </div>
-
-        {/* Brand name */}
-        <p className="text-3xl font-semibold text-gray-700 mb-6 tracking-wide">mentorys.ai</p>
 
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">

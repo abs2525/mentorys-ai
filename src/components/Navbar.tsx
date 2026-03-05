@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import BrainLogo from "./BrainLogo";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -29,27 +29,21 @@ export default function Navbar() {
         scrolled ? "shadow-md" : "border-b border-gray-100"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <BrainLogo size={36} />
-          <span className="text-gray-800 font-semibold text-base">mentorys.ai</span>
-        </Link>
-
-        {/* Desktop nav */}
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        {/* Desktop nav - right side in RTL */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-gray-700 hover:text-[#E8491D] font-medium text-sm transition-colors"
+              className="text-gray-700 hover:text-[#E8491D] font-bold text-base transition-colors"
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Mobile toggle - right side in RTL */}
         <button
           className="md:hidden text-gray-700"
           onClick={() => setOpen(!open)}
@@ -57,6 +51,11 @@ export default function Navbar() {
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
+
+        {/* Logo - left side in RTL */}
+        <Link href="/">
+          <Image src="/logo.png" alt="Mentorys.ai" width={140} height={40} priority className="h-14 w-auto" />
+        </Link>
       </div>
 
       {/* Mobile menu */}

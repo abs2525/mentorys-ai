@@ -7,14 +7,14 @@
   --color-primary-600: #c93c16;
 }
 
+/* English (Latin) characters use Urbanist; Hebrew falls back to Noto Sans Hebrew */
+body {
+  font-family: var(--font-english), var(--font-hebrew), sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #111827;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
 }
 
 html {

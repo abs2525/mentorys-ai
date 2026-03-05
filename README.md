@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mentorys.ai — Website Rebuild
+
+## Project Background
+
+This repository contains the **full rebuild of the Mentorys.ai website**, initiated to migrate away from the original hosting provider and launch on a new, self-managed infrastructure.
+
+The original website at [mentorys.ai](https://mentorys.ai) is a live production site offering AI training, consulting, and enterprise solutions in the Israeli market. The goal of this project is to recreate the site from scratch with a modern, maintainable tech stack — with full ownership over the code and the ability to deploy to any hosting provider.
+
+### Why a Rebuild?
+
+- **Provider independence** — move away from a third-party website builder/CMS and own the codebase entirely
+- **Performance** — Next.js static/SSR output delivers significantly faster load times
+- **Customization** — full control over design, content, and functionality without platform limitations
+- **Future-ready** — clean architecture makes it easy to add new features (blog, booking, dashboards, etc.)
+- **SEO** — server-rendered HTML improves search engine visibility
+
+---
+
+## Tech Stack
+
+| Technology | Version | Purpose |
+|---|---|---|
+| [Next.js](https://nextjs.org) | 16.1.6 | React framework with App Router + SSR |
+| [React](https://react.dev) | 19 | UI rendering |
+| [TypeScript](https://www.typescriptlang.org) | 5.x | Type safety |
+| [Tailwind CSS](https://tailwindcss.com) | 4.x | Utility-first styling (CSS-first config) |
+| [lucide-react](https://lucide.dev) | latest | Icon library |
+
+---
+
+## Design Tokens
+
+| Token | Value | Usage |
+|---|---|---|
+| Primary color | `#E8491D` | Buttons, accents, hover states |
+| Primary dark | `#c93c16` | Hover variant |
+| Font (Hebrew) | Noto Sans Hebrew | All Hebrew text |
+| Font (English/Latin) | Urbanist | All Latin characters |
+| Direction | RTL (`dir="rtl"`, `lang="he"`) | Full right-to-left layout |
+
+---
+
+## Project Structure
+
+```
+mentorys-ai/
+├── public/
+│   └── logo.png                  # Brand logo
+├── src/
+│   ├── app/
+│   │   ├── globals.css           # Tailwind v4 theme + global styles
+│   │   ├── layout.tsx            # Root layout (RTL, Hebrew, fonts)
+│   │   ├── page.tsx              # Homepage
+│   │   └── ai-tools/
+│   │       └── page.tsx          # AI Tools directory page
+│   └── components/
+│       ├── Navbar.tsx            # Fixed top navigation bar
+│       ├── Hero.tsx              # Hero / above-the-fold section
+│       ├── Services.tsx          # Service offering cards
+│       ├── About.tsx             # Mission, vision, values
+│       ├── AIToolsPreview.tsx    # AI tools recommendation table
+│       ├── ClientsCarousel.tsx   # Client logos carousel
+│       ├── Contact.tsx           # Contact form + info
+│       ├── Footer.tsx            # Site footer
+│       └── WhatsAppButton.tsx    # Floating WhatsApp CTA
+├── package.json
+└── README.md
+```
+
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Homepage — hero, services, about, AI tools preview, clients, contact |
+| `/ai-tools` | Full AI tools directory with 26 tools across 4 categories |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Install & Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is a standard Next.js application and can be deployed to any provider that supports Node.js or static exports:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Vercel** (recommended for Next.js) — connect the GitHub repo and deploy in one click
+- **Netlify** — supported via Next.js adapter
+- **Self-hosted** — run `npm run build && npm start` on any VPS/server
+- **Docker** — containerize with a standard Node.js Dockerfile
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Releases
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Version | Description |
+|---|---|
+| `v1.0.0` | Initial website baseline — full site rebuilt from original mentorys.ai, RTL Hebrew layout, brand logo, Noto Sans Hebrew + Urbanist fonts |
+
+---
+
+## Contact
+
+**Mentorys.ai**
+- Website: [mentorys.ai](https://mentorys.ai)
+- Email: info@mentorys.ai
+- Phone: +972-54-662-5978
+- WhatsApp: [wa.me/972546625978](https://wa.me/972546625978)

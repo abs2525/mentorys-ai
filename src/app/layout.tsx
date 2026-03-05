@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Assistant } from "next/font/google";
+import { Noto_Sans_Hebrew, Urbanist } from "next/font/google";
 import "./globals.css";
 
-const assistant = Assistant({
-  subsets: ["latin", "hebrew"],
+const notoSansHebrew = Noto_Sans_Hebrew({
+  subsets: ["hebrew", "latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-assistant",
+  variable: "--font-hebrew",
+});
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-english",
 });
 
 export const metadata: Metadata = {
@@ -20,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl" className={assistant.variable}>
-      <body className="font-[family-name:var(--font-assistant)] antialiased bg-white text-gray-900">
+    <html lang="he" dir="rtl" className={`${notoSansHebrew.variable} ${urbanist.variable}`}>
+      <body className="font-[family-name:var(--font-hebrew)] antialiased bg-white text-gray-900">
         {children}
       </body>
     </html>
