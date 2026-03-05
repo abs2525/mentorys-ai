@@ -119,6 +119,21 @@ This project is a standard Next.js application and can be deployed to any provid
 | Version | Description |
 |---|---|
 | `v1.0.0` | Initial website baseline — full site rebuilt from original mentorys.ai, RTL Hebrew layout, brand logo, Noto Sans Hebrew + Urbanist fonts |
+| `v1.1.0` | Contact form integration, favicon fix, footer logo, navbar improvements |
+
+---
+
+## Changelog
+
+### v1.1.0
+- **Contact form → Google Sheets integration** — form submissions are saved directly to a connected Google Sheet via Google Apps Script Web App. Fields: Name, Phone, Email, Date, Preferred Contact Method, Comments/Notes
+- **Preferred Contact Method field** — new dropdown added to contact form (Email / Phone / WhatsApp), stored as the last column to maintain backward compatibility with the existing site during migration
+- **Leading zero fix for phone numbers** — Apps Script uses `setNumberFormat("@")` + `SpreadsheetApp.flush()` to ensure Israeli phone numbers (e.g. 0541234567) are stored as text without losing the leading zero
+- **Favicon** — replaced default Next.js triangle icon with Mentorys.ai brand logo (`src/app/icon.png`)
+- **Footer logo** — replaced SVG brain logo with `logo.png` brand image
+- **Navbar RTL fix** — corrected element order so nav links appear on the right and logo on the left (as expected in RTL Hebrew layout)
+- **Navbar font** — increased weight to `font-bold` and size from `text-sm` to `text-base`
+- **Navbar & logo size** — navbar height increased to `h-20`, logo height to `h-14`
 
 ---
 

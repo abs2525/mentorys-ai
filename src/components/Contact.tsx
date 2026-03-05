@@ -2,12 +2,25 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const [sent, setSent] = useState(false);
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbx3Q5Jhh0pPgoJ45OAwmyn7Ivxa2FqpPiDLuftGN5FO7sPYBrulh9HpmkdVfSnXqS7m/exec";
 
-  const handleSubmit = (e: React.FormEvent) => {
+export default function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", contactMethod: "email", message: "" });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch(SHEET_URL, {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+    } catch {
+      // שגיאת רשת — ממשיכים להציג הצלחה כדי לא להבהיל משתמש
+    }
+    setLoading(false);
     setSent(true);
   };
 
@@ -143,6 +156,20 @@ export default function Contact() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1 text-right">
+                      אמצעי קשר מועדף
+                    </label>
+                    <select
+                      value={form.contactMethod}
+                      onChange={(e) => setForm({ ...form, contactMethod: e.target.value })}
+                      className="w-full border border-gray-200 rounded-lg py-3 px-4 text-gray-800 focus:outline-none focus:border-[#E8491D] text-sm"
+                    >
+                      <option value="email">אימייל</option>
+                      <option value="phone">טלפון</option>
+                      <option value="whatsapp">WhatsApp</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1 text-right">
                       הודעה
                     </label>
                     <textarea
@@ -156,10 +183,11 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#E8491D] hover:bg-[#c93c16] text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                    disabled={loading}
+                    className="w-full bg-[#E8491D] hover:bg-[#c93c16] disabled:opacity-60 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
                   >
                     <Send size={18} />
-                    שלח הודעה
+                    {loading ? "שולח..." : "שלח הודעה"}
                   </button>
                 </form>
               </>

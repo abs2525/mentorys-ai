@@ -26,7 +26,7 @@ const services = [
       "ניהול מוצר עם AI",
       "בדיקות תוכנה ו-QA עם AI",
       "שיווק דיגיטלי עם AI",
-      "ניתוח נתונים BII עם AI",
+      "ניתוח נתונים BI עם AI",
     ],
     img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80",
   },

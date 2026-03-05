@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BrainLogo from "./BrainLogo";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -8,10 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div className="flex flex-col items-start gap-3">
-            <div className="flex items-center gap-2">
-              <BrainLogo size={36} />
-              <span className="font-semibold text-gray-800">mentorys.ai</span>
-            </div>
+            <Image src="/logo.png" alt="Mentorys.ai" width={140} height={50} className="h-12 w-auto" />
             <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
               מובילים את מהפכת הבינה המלאכותית בישראל
             </p>
